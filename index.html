@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="container">
+          <h1>Library</h1>
+          <div class="menu">
+            <button class="buttons">User Data</button>
+            <button class="buttons">Login</button>
+          </div>
+        </div>
+      </header>
+      <main class="main">
+        <button class="buttons" id="addBook">+ Add Book</button>
+        <div class="bookGrid" id = "booksGrid"></div>
+      </main>
+      <footer class="footer">
+        <p>
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          anshulg614
+        </p>
+        <a href="https://github.com/anshulg614" target="_blank">
+          <i class="fab fa-github"></i
+        ></a>
+      </footer>
+      <div class="modal" id="bookModal">
+        <form class="add-book-form" id="addBookForm">
+          <h3>Add new book</h3>
+          <input
+            class="input"
+            type="text"
+            id="title"
+            placeholder="Title"
+            required
+            maxlength="100"
+          />
+          <p class="error-msg" id="errorMsg"></p>
+          <input
+            class="input"
+            type="text"
+            id="author"
+            placeholder="Author"
+            required
+            maxlength="100"
+          />
+          <input
+            class="input"
+            type="number"
+            id="pages"
+            placeholder="Pages"
+            required
+            max="10000"
+          />
+          <div class="is-read">
+            <label for="is-read">Have you read it?</label>
+            <input class="checkbox" type="checkbox" id="isRead" />
+          </div>
+          <button class="btn btn-light-green" type="submit">Submit</button>
+        </form>
+      </div>
+      <div class="modal" id="accountModal"></div>
+      <div class="overlay" id="overlay"></div>
+    </div>
+  </body>
+</html>

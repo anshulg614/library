@@ -72,6 +72,7 @@ window.onload = function () {
   };
 
   const updateBooksGrid = () => {
+    restoreLocal();
     resetBooksGrid();
     for (let book of library.books) {
       createBookCard(book);
@@ -101,7 +102,7 @@ window.onload = function () {
 
     title.textContent = `"${book.title}"`;
     author.textContent = book.author;
-    pages.textContent = `${book.pages} pages`;
+    pages.textContent = `${book.numPages} pages`;
     removeBtn.textContent = "Remove";
 
     if (book.isRead) {
@@ -132,7 +133,6 @@ window.onload = function () {
   const addTheBook = (e) => {
     e.preventDefault();
     const newBook = getBookFromInput();
-    console.log("dn");
 
     if (library.isInLibrary(newBook)) {
       errorMsg.textContent = "This book already exists in your library";
@@ -181,4 +181,9 @@ window.onload = function () {
       library.books = [];
     }
   };
+
+  const JSONToBook = (book) => {
+    return new Book(book.title, book.author, book.numPages, book.isRead)
+  }
+  updateBooksGrid();
 };

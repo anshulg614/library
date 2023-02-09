@@ -38,11 +38,28 @@ window.onload = function () {
   const accountBtn = document.getElementById("accountBtn");
   const addBook = document.getElementById("addBook");
   const bookModal = document.getElementById("bookModal");
+  const userDataModal = document.getElementById("dataModal");
   const overlay = document.getElementById("overlay");
   const accountModal = document.getElementById("accountModal");
   const errorMsg = document.getElementById("errorMsg");
   const addBookForm = document.getElementById("addBookForm");
   const booksGrid = document.getElementById("booksGrid");
+  const userData = document.getElementById("user-data");
+
+  const getUserData = () => {
+    let totalBooks = library.books.filter(function(Book) {
+      return Book.isRead
+    }).length;
+    let totalPages = library.books.reduce((total, book) => {
+      return total + parseInt(book.numPages);
+    }, 0);
+    userDataModal.innerHTML = `
+    <h3>User Data</h3>
+    <p>Total Books Read: ${totalBooks}</p>
+    <p>Total Pages Read: ${totalPages}</p>`
+    userDataModal.classList.add("active");
+    overlay.classList.add("active");
+  }
 
   const openAddBookModal = () => {
     addBookForm.reset();
@@ -52,7 +69,7 @@ window.onload = function () {
 
   const closeAllModals = () => {
     closeAddBookModal();
-    closeAccountModal();
+    closeUserDataModal();
   };
 
   const closeAddBookModal = () => {
@@ -64,6 +81,11 @@ window.onload = function () {
 
   const closeAccountModal = () => {
     accountModal.classList.remove("active");
+    overlay.classList.remove("active");
+  };
+
+  const closeUserDataModal = () => {
+    userDataModal.classList.remove("active");
     overlay.classList.remove("active");
   };
 
@@ -168,6 +190,7 @@ window.onload = function () {
   overlay.addEventListener("click", closeAllModals);
   addBookForm.addEventListener("submit", addTheBook);
   window.addEventListener("keydown", handleKeyboardInput);
+  userData.addEventListener("click", getUserData);
 
   const saveLocal = () => {
     localStorage.setItem("library", JSON.stringify(library.books));

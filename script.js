@@ -35,12 +35,10 @@ window.onload = function () {
   }
   const library = new Library();
 
-  const accountBtn = document.getElementById("accountBtn");
   const addBook = document.getElementById("addBook");
   const bookModal = document.getElementById("bookModal");
   const userDataModal = document.getElementById("dataModal");
   const overlay = document.getElementById("overlay");
-  const accountModal = document.getElementById("accountModal");
   const errorMsg = document.getElementById("errorMsg");
   const addBookForm = document.getElementById("addBookForm");
   const booksGrid = document.getElementById("booksGrid");
@@ -77,11 +75,6 @@ window.onload = function () {
     overlay.classList.remove("active");
     errorMsg.classList.remove("active");
     errorMsg.textContent = "";
-  };
-
-  const closeAccountModal = () => {
-    accountModal.classList.remove("active");
-    overlay.classList.remove("active");
   };
 
   const closeUserDataModal = () => {

@@ -45,8 +45,8 @@ window.onload = function () {
   const userData = document.getElementById("user-data");
 
   const getUserData = () => {
-    let totalBooks = library.books.filter(function(Book) {
-      return Book.isRead
+    let totalBooks = library.books.filter(function (Book) {
+      return Book.isRead;
     }).length;
     let totalPages = library.books.reduce((total, book) => {
       return total + parseInt(book.numPages);
@@ -54,10 +54,10 @@ window.onload = function () {
     userDataModal.innerHTML = `
     <h3>User Data</h3>
     <p>Total Books Read: ${totalBooks}</p>
-    <p>Total Pages Read: ${totalPages}</p>`
+    <p>Total Pages Read: ${totalPages}</p>`;
     userDataModal.classList.add("active");
     overlay.classList.add("active");
-  }
+  };
 
   const openAddBookModal = () => {
     addBookForm.reset();
@@ -199,7 +199,7 @@ window.onload = function () {
   };
 
   const JSONToBook = (book) => {
-    return new Book(book.title, book.author, book.numPages, book.isRead)
-  }
+    return new Book(book.title, book.author, book.numPages, book.isRead);
+  };
   updateBooksGrid();
 };
